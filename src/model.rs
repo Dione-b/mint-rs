@@ -1,12 +1,18 @@
 use serde::{Deserialize, Serialize};
 use utoipa::Component;
 
+// Define the request body for minting an NFT
 #[derive(Serialize, Deserialize, Component)]
 pub struct MintNftRequest {
     pub(crate) owner_address: String,
     pub(crate) token_name: String,
-    pub(crate) toke_uri: String,
+    pub(crate) token_uri: String,
     pub(crate) file_path: String,
+}
+
+#[derive(Serialize, Deserialize, Component)]
+pub struct TokenFileForm {
+    file: Vec<u8>,
 }
 
 #[derive(Serialize, Deserialize, Component)]
@@ -24,7 +30,7 @@ pub struct NftMetadata {
     pub(crate) token_uri: String,
 }
 
-#[derive(Serialize, Deserialize, Component)]
+#[derive(Serialize, Deserialize)]
 pub struct UploadResponse {
     token_uri: String,
 }
